@@ -1,6 +1,7 @@
 {
   "name": "google-sheets-api",
   "version": "1.0.0",
+  "type": "module",
   "description": "An Express application for interacting with Google Sheets API",
   "main": "server.js",
   "scripts": {
@@ -9,6 +10,7 @@
   },
   "dependencies": {
     "body-parser": "^1.20.2",
+    "dotenv": "^16.4.7",
     "express": "^4.18.2",
     "googleapis": "^120.0.0"
   },

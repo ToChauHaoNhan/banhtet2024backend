@@ -16,6 +16,7 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 iconic-baton-430607-c2-a821656c83ca.json
+.env
 .idea
 .DS_Store
 *.suo

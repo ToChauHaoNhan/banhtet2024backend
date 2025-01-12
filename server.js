@@ -1,12 +1,19 @@
 import express from 'express';
 import { google } from 'googleapis';
 import bodyParser from 'body-parser';
-import keys from '../src/iconic-baton-430607-c2-a821656c83ca.json'  
+import dotenv from 'dotenv';
+
+dotenv.config(); 
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+
+const keys = {
+    client_email: process.env.CLIENT_EMAIL,
+    private_key: process.env.PRIVATE_KEY.replace(/\\n/g, '\n')
+};
 
 async function checkSheets(sheetName) {
     const client = new google.auth.JWT(
@@ -19,7 +26,7 @@ async function checkSheets(sheetName) {
     try {
         await client.authorize();
         const response = await google.sheets({ version: 'v4', auth: client }).spreadsheets.values.get({
-            spreadsheetId: '15v4ni53TXxgzWow4lZws5L07bCg8Ke_Yomw_ZdiBeso',
+            spreadsheetId: '15v4ni53TXxgzWow4lZws5L07bCg8Ke_Yomw_ZdiBeso', 
             range: `${sheetName}!O1`
         });
         const data = response.data.values;
