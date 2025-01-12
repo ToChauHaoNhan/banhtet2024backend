@@ -2,6 +2,7 @@ import express from 'express';
 import { google } from 'googleapis';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config(); 
 
@@ -9,6 +10,8 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
+
 
 const keys = {
     client_email: process.env.CLIENT_EMAIL,
